@@ -28,4 +28,7 @@ spec:
               memory: 100Mi
           env:
             - name: NAME
-              value: Greg
+              valueFrom:
+                configMapKeyRef:
+                  name: name-2019071601
+                  key: name
