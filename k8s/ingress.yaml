@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: hello
+  namespace: challenge
+spec:
+  rules:
+    - host: kc.nilcons.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: hello
+              servicePort: enduser

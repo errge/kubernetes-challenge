@@ -4,9 +4,10 @@ metadata:
   name: hello
   namespace: challenge
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
-    - port: 80
+    - name: enduser
+      port: 80
       targetPort: enduser
   selector:
     deployment: hello
