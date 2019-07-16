@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello
+  namespace: challenge
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      deployment: hello
+  template:
+    metadata:
+      labels:
+        deployment: hello
+    spec:
+      containers:
+        - name: nodejs
+          image: errge/kubernetes-challenge
+          ports:
+            - name: enduser
+              containerPort: 4000
+          readinessProbe:
+            httpGet:
+              port: 4000
+          resources:
+            limits:
+              cpu: 0.05
+              memory: 100Mi
+          env:
+            - name: NAME
+              value: Greg
